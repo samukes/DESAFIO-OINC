@@ -11,6 +11,16 @@ config :desafio_oinc,
   ecto_repos: [DesafioOinc.Repo],
   generators: [timestamp_type: :utc_datetime]
 
+config :desafio_oinc, DesafioOinc.App,
+  event_store: [
+    adapter: Commanded.EventStore.Adapters.EventStore,
+    event_store: DesafioOinc.EventStore
+  ],
+  pubsub: :local,
+  registry: :local
+
+config :desafio_oinc, event_stores: [DesafioOinc.EventStore]
+
 # Configures the endpoint
 config :desafio_oinc, DesafioOincWeb.Endpoint,
   url: [host: "localhost"],
