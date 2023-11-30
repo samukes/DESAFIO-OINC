@@ -8,6 +8,7 @@ defmodule DesafioOinc.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      DesafioOinc.App,
       DesafioOincWeb.Telemetry,
       DesafioOinc.Repo,
       {DNSCluster, query: Application.get_env(:desafio_oinc, :dns_cluster_query) || :ignore},
