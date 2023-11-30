@@ -9,6 +9,7 @@ defmodule DesafioOinc.Application do
   def start(_type, _args) do
     children = [
       DesafioOinc.App,
+      DesafioOinc.ProjectorSupervisor,
       DesafioOincWeb.Telemetry,
       DesafioOinc.Repo,
       {DNSCluster, query: Application.get_env(:desafio_oinc, :dns_cluster_query) || :ignore},

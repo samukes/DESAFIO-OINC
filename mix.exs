@@ -19,7 +19,7 @@ defmodule DesafioOinc.MixProject do
   def application do
     [
       mod: {DesafioOinc.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :eventstore]
     ]
   end
 
@@ -45,7 +45,8 @@ defmodule DesafioOinc.MixProject do
       {:credo, "~> 1.7"},
       {:commanded, "~> 1.4"},
       {:commanded_eventstore_adapter, "~> 1.2"},
-      {:exconstructor, "~> 1.2"}
+      {:exconstructor, "~> 1.2"},
+      {:commanded_ecto_projections, "~> 1.3"}
     ]
   end
 
