@@ -38,9 +38,14 @@ defmodule DesafioOinc.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:jason, "~> 1.2"},
+      {:jason, "~> 1.4"},
       {:dns_cluster, "~> 0.1.1"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:mix_test_watch, "~> 1.1"},
+      {:credo, "~> 1.7"},
+      {:commanded, "~> 1.4"},
+      {:commanded_eventstore_adapter, "~> 1.2"},
+      {:exconstructor, "~> 1.2"}
     ]
   end
 
