@@ -1,4 +1,4 @@
-defmodule DesafioOinc.Lecturers.Commands.DeleteLecturer do
+defmodule DesafioOinc.Studies.Commands.RestoreLecturer do
   @derive Jason.Encoder
   defstruct [:uuid]
 

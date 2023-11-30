@@ -1,3 +1,3 @@
 alias DesafioOinc.App
-alias DesafioOinc.Lecturers.Aggregates.Lecturer
-alias DesafioOinc.Lecturers.Commands.CreateLecturer
+alias DesafioOinc.Studies.Aggregates.Lecturer
+alias DesafioOinc.Studies.Commands.CreateLecturer

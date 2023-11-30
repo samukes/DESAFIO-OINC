@@ -1,7 +1,7 @@
-defmodule DesafioOinc.ProjectorSupervisor do
+defmodule DesafioOinc.Studies.Supervisor do
   use Supervisor
 
-  alias DesafioOinc.Lecturers.Projectors.Lecturer, as: LecturerProjectorWorker
+  alias DesafioOinc.Studies.Projectors.Lecturer, as: LecturerProjectorWorker
 
   def start_link(arg) do
     Supervisor.start_link(__MODULE__, arg, name: __MODULE__)
