@@ -1,4 +1,4 @@
-defmodule DesafioOinc.Lecturers.Projections.Lecturer do
+defmodule DesafioOinc.Studies.Projections.Lecturer do
   use Ecto.Schema
 
   import Ecto.Changeset

@@ -1,13 +1,13 @@
-defmodule DesafioOinc.Lecturers.Projectors.Lecturer do
+defmodule DesafioOinc.Studies.Projectors.Lecturer do
   use Commanded.Projections.Ecto,
     name: "LecturesProjectors",
     application: DesafioOinc.App,
     repo: DesafioOinc.Repo,
     consistency: :strong
 
-  alias DesafioOinc.Lecturers.Projections.Lecturer
+  alias DesafioOinc.Studies.Projections.Lecturer
 
-  alias DesafioOinc.Lecturers.Events.{
+  alias DesafioOinc.Studies.Events.{
     LecturerCreated,
     LecturerDeleted,
     LecturerRestored,

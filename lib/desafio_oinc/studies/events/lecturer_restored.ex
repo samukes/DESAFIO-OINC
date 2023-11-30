@@ -1,4 +1,4 @@
-defmodule DesafioOinc.Lecturers.Events.LecturerRestored do
+defmodule DesafioOinc.Studies.Events.LecturerRestored do
   @derive Jason.Encoder
   defstruct [:uuid]
 

@@ -1,4 +1,4 @@
-defmodule DesafioOinc.Lecturers.Commands.CreateLecturer do
+defmodule DesafioOinc.Studies.Commands.CreateLecturer do
   @derive Jason.Encoder
   defstruct [:uuid, :name, :age, deleted_at: nil]
 

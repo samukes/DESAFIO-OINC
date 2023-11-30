@@ -1,19 +1,19 @@
-defmodule DesafioOinc.Lecturers.AggregatesTest do
+defmodule DesafioOinc.Studies.AggregatesTest do
   use DesafioOinc.DataCase, async: true
 
   import Commanded.Assertions.EventAssertions
 
   alias DesafioOinc.App
-  alias DesafioOinc.Lecturers.Aggregates.Lecturer, as: LecturersAggregates
+  alias DesafioOinc.Studies.Aggregates.Lecturer, as: LecturersAggregates
 
-  alias DesafioOinc.Lecturers.Commands.{
+  alias DesafioOinc.Studies.Commands.{
     CreateLecturer,
     DeleteLecturer,
     RestoreLecturer,
     UpdateLecturer
   }
 
-  alias DesafioOinc.Lecturers.Events.{
+  alias DesafioOinc.Studies.Events.{
     LecturerCreated,
     LecturerDeleted,
     LecturerRestored,

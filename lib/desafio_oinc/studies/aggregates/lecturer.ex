@@ -1,17 +1,17 @@
-defmodule DesafioOinc.Lecturers.Aggregates.Lecturer do
+defmodule DesafioOinc.Studies.Aggregates.Lecturer do
   @derive Jason.Encoder
   defstruct [:uuid, :name, :age, deleted_at: nil]
 
   use ExConstructor
 
-  alias DesafioOinc.Lecturers.Commands.{
+  alias DesafioOinc.Studies.Commands.{
     CreateLecturer,
     DeleteLecturer,
     RestoreLecturer,
     UpdateLecturer
   }
 
-  alias DesafioOinc.Lecturers.Events.{
+  alias DesafioOinc.Studies.Events.{
     LecturerCreated,
     LecturerDeleted,
     LecturerRestored,

@@ -1,11 +1,11 @@
-defmodule DesafioOinc.Lecturers.Events.LecturerDeleted do
+defmodule DesafioOinc.Studies.Events.LecturerDeleted do
   @derive Jason.Encoder
   defstruct [
     :uuid,
     :datetime
   ]
 
-  alias DesafioOinc.Lecturers.Events.LecturerDeleted
+  alias DesafioOinc.Studies.Events.LecturerDeleted
 
   defimpl Commanded.Serialization.JsonDecoder, for: LecturerDeleted do
     @doc """
