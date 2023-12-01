@@ -1,5 +1,5 @@
 defmodule DesafioOinc.Studies.AggregatesTest do
-  use DesafioOinc.DataCase, async: true
+  use DesafioOinc.DataCase, async: false
 
   import Commanded.Assertions.EventAssertions
 
