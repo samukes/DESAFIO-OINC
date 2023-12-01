@@ -9,7 +9,14 @@ defmodule DesafioOinc.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -19,7 +26,7 @@ defmodule DesafioOinc.MixProject do
   def application do
     [
       mod: {DesafioOinc.Application, []},
-      extra_applications: [:logger, :runtime_tools, :eventstore]
+      extra_applications: [:logger, :runtime_tools, :eventstore, :ex_machina]
     ]
   end
 
@@ -41,12 +48,16 @@ defmodule DesafioOinc.MixProject do
       {:jason, "~> 1.4"},
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
-      {:mix_test_watch, "~> 1.1"},
       {:credo, "~> 1.7"},
       {:commanded, "~> 1.4"},
       {:commanded_eventstore_adapter, "~> 1.2"},
       {:exconstructor, "~> 1.2"},
-      {:commanded_ecto_projections, "~> 1.3"}
+      {:commanded_ecto_projections, "~> 1.3"},
+      {:absinthe, "~> 1.7"},
+      {:absinthe_plug, "~> 1.5"},
+      {:mix_test_watch, "~> 1.1", only: :test},
+      {:ex_machina, "~> 2.7", only: :test},
+      {:excoveralls, "~> 0.18.0", only: :test}
     ]
   end
 
