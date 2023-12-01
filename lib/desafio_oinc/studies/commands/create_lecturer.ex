@@ -3,4 +3,8 @@ defmodule DesafioOinc.Studies.Commands.CreateLecturer do
   defstruct [:uuid, :name, :age, deleted_at: nil]
 
   use ExConstructor
+
+  def assign_uuid(%__MODULE__{} = create, uuid) do
+    %__MODULE__{create | uuid: uuid}
+  end
 end

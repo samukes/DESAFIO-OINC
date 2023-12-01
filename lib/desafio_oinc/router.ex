@@ -3,7 +3,15 @@ defmodule DesafioOinc.Router do
 
   alias DesafioOinc.Studies.Aggregates.Lecturer
 
-  alias DesafioOinc.Studies.Commands.{CreateLecturer, DeleteLecturer, RestoreLecturer, UpdateLecturer}
+  alias DesafioOinc.Studies.Commands.{
+    CreateLecturer,
+    DeleteLecturer,
+    RestoreLecturer,
+    UpdateLecturer
+  }
 
-  dispatch([CreateLecturer, DeleteLecturer, RestoreLecturer, UpdateLecturer], to: Lecturer, identity: :uuid)
+  dispatch([CreateLecturer, DeleteLecturer, RestoreLecturer, UpdateLecturer],
+    to: Lecturer,
+    identity: :uuid
+  )
 end
