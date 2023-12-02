@@ -9,6 +9,7 @@ defmodule DesafioOinc.Storage do
     reset_eventstore()
 
     {:ok, _} = Application.ensure_all_started(:desafio_oinc)
+    {:ok, _} = Application.ensure_all_started(:commanded)
 
     reset_readstore()
   end

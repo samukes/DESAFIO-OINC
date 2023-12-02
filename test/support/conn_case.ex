@@ -33,6 +33,7 @@ defmodule DesafioOincWeb.ConnCase do
 
   setup tags do
     DesafioOinc.DataCase.setup_sandbox(tags)
+    DesafioOinc.Storage.reset!()
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

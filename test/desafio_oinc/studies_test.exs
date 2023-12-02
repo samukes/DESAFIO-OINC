@@ -8,34 +8,38 @@ defmodule DesafioOinc.StudiesTest do
   setup do
     attrs = :lecturer |> build() |> Map.from_struct()
 
-    %{lecturer: Studies.create_lecturer(attrs)}
+    {:ok, lecturer} = Studies.create_lecturer(attrs)
+
+    %{lecturer: lecturer}
   end
 
   describe "create_lecturer/1" do
     test "should create a lecturer" do
       attrs = :lecturer |> build() |> Map.from_struct()
 
-      assert %{age: 32, deleted_at: nil, name: "Lecturer Name"} = Studies.create_lecturer(attrs)
+      {:ok, lecturer} = Studies.create_lecturer(attrs)
+
+      assert %{age: 32, deleted_at: nil, name: "Lecturer Name"} = lecturer
     end
   end
 
   describe "delete_lecturer/1" do
     test "should soft delete a lecturer", %{lecturer: lecturer} do
-      assert :ok = Studies.delete_lecturer(lecturer.uuid)
+      assert {:ok, _} = Studies.delete_lecturer(lecturer.uuid)
     end
   end
 
   describe "restore_lecturer/1" do
     test "should soft restore a soft deleted lecturer", %{lecturer: lecturer} do
-      :ok = Studies.delete_lecturer(lecturer.uuid)
+      {:ok, _} = Studies.delete_lecturer(lecturer.uuid)
 
-      assert :ok = Studies.restore_lecturer(lecturer.uuid)
+      assert {:ok, _} = Studies.restore_lecturer(lecturer.uuid)
     end
   end
 
   describe "update_lecturer/1" do
     test "should update a lecturer", %{lecturer: lecturer} do
-      updated_lecturer = Studies.update_lecturer(lecturer.uuid, %{name: "Another name", age: 23})
+      {:ok, updated_lecturer} = Studies.update_lecturer(lecturer.uuid, %{name: "Another name", age: 23})
 
       refute lecturer.name == updated_lecturer.name
       refute lecturer.age == updated_lecturer.age
@@ -59,7 +63,7 @@ defmodule DesafioOinc.StudiesTest do
 
       Studies.create_lecturer(attrs)
 
-      assert [_head, _second] = Studies.list_lecturers()
+      assert [_head, _second] = Studies.list_lecturers(%{})
     end
   end
 end
