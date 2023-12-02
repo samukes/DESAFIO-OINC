@@ -21,8 +21,10 @@ defmodule DesafioOinc.Studies do
     end
   end
 
-  def list_lecturers() do
-    query = from(l in Lecturer, where: is_nil(l.deleted_at))
+  def list_lecturers(attrs) do
+    only_deleted = Map.get(attrs, :only_deleted, false)
+
+    query = from(l in Lecturer, where: is_nil(l.deleted_at) != ^only_deleted)
 
     Repo.all(query)
   end
@@ -36,7 +38,7 @@ defmodule DesafioOinc.Studies do
       |> CreateLecturer.assign_uuid(uuid)
 
     case App.dispatch(create_lecturer_command, consistency: :strong) do
-      :ok -> Repo.get!(Lecturer, uuid)
+      :ok -> {:ok, Repo.get!(Lecturer, uuid)}
       reson -> reson
     end
   end
@@ -45,7 +47,7 @@ defmodule DesafioOinc.Studies do
     with {:ok, lecturer} <- get_lecturer(uuid),
          {:ok, command} <- build_delete_lecturer_commmand(lecturer),
          :ok = result <- App.dispatch(command, consistency: :strong) do
-      result
+      {:ok, result}
     end
   end
 
@@ -62,7 +64,7 @@ defmodule DesafioOinc.Studies do
     with {:ok, lecturer} <- get_lecturer(uuid, false),
          {:ok, command} <- build_create_lecturer_commmand(lecturer),
          :ok = result <- App.dispatch(command, consistency: :strong) do
-      result
+      {:ok, result}
     end
   end
 
@@ -79,7 +81,7 @@ defmodule DesafioOinc.Studies do
     with {:ok, lecturer} <- get_lecturer(uuid),
          {:ok, command} <- build_update_lecturer_commmand(lecturer, attrs),
          :ok <- App.dispatch(command, consistency: :strong) do
-      Repo.get!(Lecturer, uuid)
+      {:ok, Repo.get!(Lecturer, uuid)}
     end
   end
 
