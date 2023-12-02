@@ -26,7 +26,7 @@ defmodule DesafioOinc.MixProject do
   def application do
     [
       mod: {DesafioOinc.Application, []},
-      extra_applications: [:logger, :runtime_tools, :eventstore, :ex_machina]
+      extra_applications: [:logger, :runtime_tools, :eventstore]
     ]
   end
 
@@ -56,7 +56,6 @@ defmodule DesafioOinc.MixProject do
       {:absinthe, "~> 1.7"},
       {:absinthe_plug, "~> 1.5"},
       {:mix_test_watch, "~> 1.1", only: :test},
-      {:ex_machina, "~> 2.7", only: :test},
       {:excoveralls, "~> 0.18.0", only: :test}
     ]
   end
