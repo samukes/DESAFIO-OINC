@@ -1,4 +1,4 @@
-defmodule DesafioOinc.Studies.AggregatesTest do
+defmodule DesafioOinc.Studies.LecturerTest do
   use DesafioOinc.DataCase, async: false
 
   import Commanded.Assertions.EventAssertions
