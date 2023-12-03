@@ -1,12 +1,10 @@
 defmodule DesafioOinc.StudiesTest do
   use DesafioOinc.DataCase, async: false
 
-  import DesafioOinc.Factory
-
   alias DesafioOinc.Studies
 
   setup do
-    attrs = :lecturer |> build() |> Map.from_struct()
+    attrs = %{name: "Lecturer Name", age: 32}
 
     {:ok, lecturer} = Studies.create_lecturer(attrs)
 
@@ -14,8 +12,8 @@ defmodule DesafioOinc.StudiesTest do
   end
 
   describe "create_lecturer/1" do
-    test "should create a lecturer" do
-      attrs = :lecturer |> build() |> Map.from_struct()
+    test "should create a lecturer", %{lecturer: lecturer} do
+      attrs = Map.from_struct(lecturer)
 
       {:ok, lecturer} = Studies.create_lecturer(attrs)
 
@@ -39,7 +37,8 @@ defmodule DesafioOinc.StudiesTest do
 
   describe "update_lecturer/1" do
     test "should update a lecturer", %{lecturer: lecturer} do
-      {:ok, updated_lecturer} = Studies.update_lecturer(lecturer.uuid, %{name: "Another name", age: 23})
+      {:ok, updated_lecturer} =
+        Studies.update_lecturer(lecturer.uuid, %{name: "Another name", age: 23})
 
       refute lecturer.name == updated_lecturer.name
       refute lecturer.age == updated_lecturer.age
@@ -58,8 +57,8 @@ defmodule DesafioOinc.StudiesTest do
   end
 
   describe "list_lecturer/1" do
-    test "should retrieve a lecturer" do
-      attrs = :lecturer |> build() |> Map.from_struct()
+    test "should retrieve a lecturer", %{lecturer: lecturer} do
+      attrs = Map.from_struct(lecturer)
 
       Studies.create_lecturer(attrs)
 
