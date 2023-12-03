@@ -1,4 +1,4 @@
-defmodule DesafioOinc.Studies.Projections.Lecturer do
+defmodule DesafioOinc.Studies.Projections.Student do
   use Ecto.Schema
 
   import Ecto.Changeset
@@ -10,20 +10,20 @@ defmodule DesafioOinc.Studies.Projections.Lecturer do
   @fields ~w(uuid name age deleted_at)a
   @required_fields ~w(name age)a
 
-  schema "lecturers" do
+  schema "students" do
     field :name, :string
     field :age, :integer
     field :deleted_at, :naive_datetime, default: nil
 
     belongs_to :lesson, Lesson, references: :uuid
     has_many :lessons, Lesson, foreign_key: :uuid, references: :lesson_id
-    has_many :students, through: [:lessons, :student]
+    has_many :lecturers, through: [:lessons, :lecturer]
 
     timestamps()
   end
 
-  def changeset(lecturer, attrs \\ %{}) do
-    lecturer
+  def changeset(student, attrs \\ %{}) do
+    student
     |> cast(attrs, @fields)
     |> validate_required(@required_fields)
   end
