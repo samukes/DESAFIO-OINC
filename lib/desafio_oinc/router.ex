@@ -1,7 +1,7 @@
 defmodule DesafioOinc.Router do
   use Commanded.Commands.Router
 
-  alias DesafioOinc.Studies.Aggregates.{Lecturer, Student}
+  alias DesafioOinc.Studies.Aggregates.{Lecturer, Lesson, Student}
 
   alias DesafioOinc.Studies.Commands.{
     CreateLecturer,
@@ -17,6 +17,13 @@ defmodule DesafioOinc.Router do
     UpdateStudent
   }
 
+  alias DesafioOinc.Studies.Commands.{
+    CreateLesson,
+    DeleteLesson,
+    RestoreLesson,
+    UpdateLesson
+  }
+
   dispatch([CreateLecturer, DeleteLecturer, RestoreLecturer, UpdateLecturer],
     to: Lecturer,
     identity: :uuid
@@ -24,6 +31,11 @@ defmodule DesafioOinc.Router do
 
   dispatch([CreateStudent, DeleteStudent, RestoreStudent, UpdateStudent],
     to: Student,
+    identity: :uuid
+  )
+
+  dispatch([CreateLesson, DeleteLesson, RestoreLesson, UpdateLesson],
+    to: Lesson,
     identity: :uuid
   )
 end
