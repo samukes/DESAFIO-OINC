@@ -11,13 +11,14 @@ defmodule DesafioOincWeb.Resolvers.LecturerResolver do
   def get_lecture(_root, %{id: id}, _info) do
     case Studies.get_lecturer(id) do
       {:ok, lecturer} -> {:ok, lecturer_show_fields(lecturer)}
-      error -> error
+      {:error, _, reason} -> {:error, reason}
     end
   end
 
   def create_lecturer(_root, args, _) do
     case Studies.create_lecturer(args) do
       {:ok, lecturer} -> {:ok, lecturer_show_fields(lecturer)}
+      {:error, _, reason} -> {:error, reason}
       error -> error
     end
   end
@@ -25,6 +26,7 @@ defmodule DesafioOincWeb.Resolvers.LecturerResolver do
   def update_lecturer(_root, %{id: id} = args, _) do
     case Studies.update_lecturer(id, args) do
       {:ok, lecturer} -> {:ok, lecturer_show_fields(lecturer)}
+      {:error, _, reason} -> {:error, reason}
       error -> error
     end
   end
@@ -32,6 +34,7 @@ defmodule DesafioOincWeb.Resolvers.LecturerResolver do
   def delete_lecturer(_root, %{id: id}, _) do
     case Studies.delete_lecturer(id) do
       {:ok, _} -> {:ok, %{message: "Success deleted lecturer #{id}"}}
+      {:error, _, reason} -> {:error, reason}
       error -> error
     end
   end
@@ -39,6 +42,7 @@ defmodule DesafioOincWeb.Resolvers.LecturerResolver do
   def restore_lecturer(_root, %{id: id}, _) do
     case Studies.restore_lecturer(id) do
       {:ok, _} -> {:ok, %{message: "Success restored lecturer #{id}"}}
+      {:error, _, reason} -> {:error, reason}
       error -> error
     end
   end

@@ -6,6 +6,7 @@ defmodule DesafioOinc.Studies.Projections.Lecturer do
   @primary_key {:uuid, :binary_id, autogenerate: false}
   @derive {Phoenix.Param, key: :uuid}
   @fields ~w(uuid name age deleted_at)a
+  @required_fields ~w(name age)a
 
   schema "lecturers" do
     field :name, :string
@@ -16,6 +17,8 @@ defmodule DesafioOinc.Studies.Projections.Lecturer do
   end
 
   def changeset(lecturer, attrs \\ %{}) do
-    cast(lecturer, attrs, @fields)
+    lecturer
+    |> cast(attrs, @fields)
+    |> validate_required(@required_fields)
   end
 end

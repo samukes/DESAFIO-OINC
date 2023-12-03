@@ -49,9 +49,7 @@ defmodule DesafioOinc.Studies.Aggregates.Lecturer do
       if not is_nil(update.age) && lecturer.age != update.age,
         do: %LecturerAgeUpdated{uuid: update.uuid, age: update.age}
 
-    commands = [update_name_command, update_age_command]
-
-    Function.identity(commands)
+    Enum.filter([update_name_command, update_age_command], &(!is_nil(&1)))
   end
 
   def apply(%__MODULE__{} = lecturer, %LecturerCreated{} = created) do

@@ -16,7 +16,7 @@ defmodule DesafioOinc.Studies do
       from(l in Lecturer, where: l.uuid == ^uuid, where: is_nil(l.deleted_at) == ^not_soft_deleted)
 
     case Repo.one(query) do
-      nil -> {:error, :not_found, "lecturer not found!"}
+      nil -> {:error, :not_found, "Lecturer not found!"}
       lecturer -> {:ok, lecturer}
     end
   end
@@ -37,9 +37,9 @@ defmodule DesafioOinc.Studies do
       |> CreateLecturer.new()
       |> CreateLecturer.assign_uuid(uuid)
 
-    case App.dispatch(create_lecturer_command, consistency: :strong) do
-      :ok -> {:ok, Repo.get!(Lecturer, uuid)}
-      reson -> reson
+    with :ok <- App.dispatch(create_lecturer_command, consistency: :strong),
+         {:ok, _} = result <- get_lecturer(uuid) do
+      result
     end
   end
 
@@ -80,8 +80,9 @@ defmodule DesafioOinc.Studies do
   def update_lecturer(uuid, attrs) do
     with {:ok, lecturer} <- get_lecturer(uuid),
          {:ok, command} <- build_update_lecturer_commmand(lecturer, attrs),
-         :ok <- App.dispatch(command, consistency: :strong) do
-      {:ok, Repo.get!(Lecturer, uuid)}
+         :ok <- App.dispatch(command, consistency: :strong),
+         {:ok, _} = result <- get_lecturer(uuid) do
+      result
     end
   end
 
