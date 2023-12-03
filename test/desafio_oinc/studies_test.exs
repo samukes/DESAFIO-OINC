@@ -51,7 +51,7 @@ defmodule DesafioOinc.StudiesTest do
     end
 
     test "should return error when no valid uuid" do
-      assert {:error, :not_found, "lecturer not found!"} =
+      assert {:error, :not_found, "Lecturer not found!"} =
                Studies.get_lecturer(Ecto.UUID.generate())
     end
   end
