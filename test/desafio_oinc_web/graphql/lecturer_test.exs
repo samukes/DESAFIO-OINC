@@ -1,5 +1,5 @@
 defmodule DesafioOincWeb.Graphql.LecturerTest do
-  use DesafioOincWeb.ConnCase, async: true
+  use DesafioOincWeb.ConnCase, async: false
 
   import DesafioOinc.Fixtures
 
