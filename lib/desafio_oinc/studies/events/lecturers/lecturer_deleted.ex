@@ -14,13 +14,9 @@ defmodule DesafioOinc.Studies.Events.LecturerDeleted do
     def decode(%LecturerDeleted{} = state) do
       %LecturerDeleted{datetime: datetime} = state
 
-      if datetime == nil do
-        %LecturerDeleted{state | datetime: DateTime.utc_now()}
-      else
-        {:ok, dt, _} = DateTime.from_iso8601(datetime)
+      {:ok, dt, _} = DateTime.from_iso8601(datetime)
 
-        %LecturerDeleted{state | datetime: dt}
-      end
+      %LecturerDeleted{state | datetime: dt}
     end
   end
 end
