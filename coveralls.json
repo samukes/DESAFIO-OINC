@@ -1,0 +1,22 @@
+{
+  "coverage_options": {
+    "output_dir": "cover/",
+    "template_path": "lib/templates/html/htmlcov/",
+    "minimum_coverage": 85,
+    "treat_no_relevant_lines_as_covered": true,
+    "xml_base_dir": "custom/path/for/xml/reports/",
+    "html_filter_full_covered": true
+  },
+
+  "skip_files": [
+    "test/support/",
+    "lib/desafio_oinc/application.ex",
+    "lib/desafio_oinc_web/telemetry.ex",
+    "lib/desafio_oinc_web/components",
+    "lib/desafio_oinc_web/router.ex"
+  ],
+
+  "terminal_options": {
+    "file_column_width": 255
+  }
+}
