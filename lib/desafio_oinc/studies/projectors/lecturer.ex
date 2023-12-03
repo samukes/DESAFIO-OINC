@@ -1,6 +1,6 @@
 defmodule DesafioOinc.Studies.Projectors.Lecturer do
   use Commanded.Projections.Ecto,
-    name: "LecturesProjectors",
+    name: __MODULE__,
     application: DesafioOinc.App,
     repo: DesafioOinc.Repo,
     consistency: :strong
