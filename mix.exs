@@ -55,6 +55,14 @@ defmodule DesafioOinc.MixProject do
       {:commanded_ecto_projections, "~> 1.3"},
       {:absinthe, "~> 1.7"},
       {:absinthe_plug, "~> 1.5"},
+      {:phoenix_live_view, "~> 0.20.1"},
+      {:floki, ">= 0.30.0", only: :test},
+      {:phoenix_live_dashboard, "~> 0.8.2"},
+      {:phoenix_html, "~> 3.3"},
+      {:gettext, "~> 0.20"},
+      {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:mix_test_watch, "~> 1.1", only: :test},
       {:excoveralls, "~> 0.18.0", only: :test}
     ]
@@ -71,7 +79,10 @@ defmodule DesafioOinc.MixProject do
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
+      "assets.build": ["tailwind default", "esbuild default"],
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end
 end
