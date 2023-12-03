@@ -17,8 +17,8 @@ defmodule DesafioOinc.Studies.Projections.Lesson do
     field :ocurrence, :date
     field :deleted_at, :naive_datetime, default: nil
 
-    has_one :lecturer, Lecturer, foreign_key: :uuid
-    has_one :student, Student, foreign_key: :uuid
+    belongs_to :lecturer, Lecturer, references: :uuid
+    belongs_to :student, Student, references: :uuid
 
     timestamps()
   end

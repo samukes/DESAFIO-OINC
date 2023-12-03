@@ -30,5 +30,6 @@ defmodule DesafioOincWeb.Router do
     pipe_through :browser
 
     live "/lecturer", LecturerLive
+    live "/student", StudentLive
   end
 end

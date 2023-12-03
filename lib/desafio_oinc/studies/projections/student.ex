@@ -15,8 +15,7 @@ defmodule DesafioOinc.Studies.Projections.Student do
     field :age, :integer
     field :deleted_at, :naive_datetime, default: nil
 
-    belongs_to :lesson, Lesson, references: :uuid
-    has_many :lessons, Lesson, foreign_key: :uuid, references: :lesson_id
+    has_many :lessons, Lesson, foreign_key: :student_id, references: :uuid
     has_many :lecturers, through: [:lessons, :lecturer]
 
     timestamps()
