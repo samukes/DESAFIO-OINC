@@ -1,18 +1,23 @@
-# DesafioOinc
+Objetivo geral:
+  * Demonstrar capacidade analítica, técnica e decisiva.
 
-To start your Phoenix server:
+Descrição do projeto:
+  * Um simples sistema onde se é possível cadastrar professores, alunos e agendar aulas.
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+Ponto crítico:
+  * Imcompleto devido a complexidade do **Commanded**(incluindo testes unitarios para as operações do mesmo)
+  * Este projeto foi criado de um boilerplate vazio usando os comandos do `mix phx.new`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+O que falta do que foi pedido:
+  * Testes unitários de casos de falha
+  * Implentar fluxo Grapql para o schema Lesson
+  * Implentar fluxo LiveView para o schema Lesson
+  * Testes unitários para os casos Graphql e Liveview da Lesson
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Setup do projeto:
+  * `mix ecto.setup` para ambiente dev
+  * `mix coveralls` para testes
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+O que poderia ser feito fora do escopo e com mais tempo:
+  * Usar o Guardiam para autenticação
+  * Implementar uma pipeline de CI(e talvez CD) no Git.
